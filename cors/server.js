@@ -21,7 +21,7 @@ let rappers = {
         'birthName': 'dylan',
         'birthLocation': 'dylan'
     }
-} 
+}
 
 app.get('/', (request, response) => {
     response.sendFile(__dirname + '/index.html')
@@ -29,13 +29,14 @@ app.get('/', (request, response) => {
 
 app.get('/api/rappers/:rapperName', (request, response)=>{
     const rapName = request.params.rapperName.toLowerCase()
+    console.log(request.params)
     console.log(rapName)
     if(rappers[rapName]){
         response.json(rappers[rapName])
     }else{
         response.json(rappers['dylan'])
     }
-    
+
 })
 
 app.listen(process.env.PORT || PORT, ()=>{
